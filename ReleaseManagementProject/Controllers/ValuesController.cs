@@ -19,14 +19,27 @@ namespace ReleaseManagementProject.Controllers
 
         public List<ReleaseManagementModel> Get(string username)
          {
-
-            return bl.GetAllAssignedModules(username);
+            try
+            {
+                return bl.GetAllAssignedModules(username);
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
 
 
         public List<ReleaseManagementModel> Get()
         {
+            try{
             return bl.GetEmployeesToAssign();
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
 
         // POST api/values
@@ -51,11 +64,27 @@ namespace ReleaseManagementProject.Controllers
         //}
         public bool Put(string modulename,[FromBody]ReleaseManagementModel values)
         {
-            return bl.UpdateModuleStatusAfterTesting(values.ModuleId);
+            try
+            {
+                return bl.UpdateModuleStatusAfterTesting(values.ModuleId);
+
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
         public bool Delete(string projectId)
         {
-            return bl.UpdateCompletedModuleStatus(projectId);
+            try
+            {
+                return bl.UpdateCompletedModuleStatus(projectId);
+
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
         // DELETE api/values/5
        

@@ -24,9 +24,18 @@ namespace ReleaseManagementProject.Controllers
         public List<ReleaseManagementModel> Get(string username)
         {
 
+            try
+            {
+                return bl.GetAllProjects(username);
 
-            
-            return bl.GetAllProjects(username);
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+
+            }
+
+
 
 
 
@@ -52,7 +61,15 @@ namespace ReleaseManagementProject.Controllers
         /////Get All Modules
         public List<ReleaseManagementModel> Delete(string projectId)
         {
-            return bl.GetAllModules(projectId);
+            try
+            {
+                return bl.GetAllModules(projectId);
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
     }
 

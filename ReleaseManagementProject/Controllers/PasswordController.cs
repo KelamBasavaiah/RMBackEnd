@@ -17,23 +17,33 @@ namespace ReleaseManagementProject.Controllers
         ManagerBL bl = new ManagerBL();
         public bool Put([FromBody]ReleaseManagementModel model)
         {
-            bool updated = false;
-            string email = bl.GetEmail(model.Username);
-            updated = bl.UpdateForgotPassword(model.Username, model.Password);
-            if (updated)
+            try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("divhyadarsh429@gmail.com");
-                mail.To.Add(email);
-                mail.Subject = "Password updation Status";
-                mail.Body = email + "Password updated Successfully";
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("divhyadarsh429@gmail.com", "dbinfosys29");
-                SmtpServer.EnableSsl = true;
-                SmtpServer.Send(mail);
+                bool updated = false;
+                string email = bl.GetEmail(model.Username);
+                updated = bl.UpdateForgotPassword(model.Username, model.Password);
+                if (updated)
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                    mail.From = new MailAddress("divhyadarsh429@gmail.com");
+                    mail.To.Add(email);
+                    mail.Subject = "Password updation Status";
+                    mail.Body = email + "Password updated Successfully";
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("divhyadarsh429@gmail.com", "dbinfosys29");
+                    SmtpServer.EnableSsl = true;
+                    SmtpServer.Send(mail);
+                }
+                return updated;
+
             }
-            return updated;
+            catch(Exception e)
+            {
+                return false;
+            }
+
+
         }
         public bool post(string username, [FromBody]ReleaseManagementModel value)
         {

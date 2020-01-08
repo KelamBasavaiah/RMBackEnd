@@ -538,7 +538,7 @@ namespace ManagerBLLibrary
             return dal.InsertRoles(employeeId, role, projectId);
 
         }
-        public DateTime GetProjectDate(string projectId)
+        public ReleaseManagementModel GetProjectDate(string projectId)
         {
             return dal.GetProjectDate(projectId);
         }
