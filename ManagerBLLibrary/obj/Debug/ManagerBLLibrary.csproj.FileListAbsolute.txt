@@ -9,3 +9,14 @@ C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\Mana
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.csproj.CopyComplete
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.dll
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\bin\Debug\ManagerBLLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\bin\Debug\ManagerBLLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\bin\Debug\ReleaseManagementDALLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\bin\Debug\ReleaseManagementProjectLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\bin\Debug\ReleaseManagementDALLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\bin\Debug\ReleaseManagementProjectLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.csprojAssemblyReference.cache
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.csproj.CoreCompileInputs.cache
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.csproj.CopyComplete
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ManagerBLLibrary\obj\Debug\ManagerBLLibrary.pdb

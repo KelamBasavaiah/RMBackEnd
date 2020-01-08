@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -605,5 +605,9 @@ namespace ManagerBLLibrary
             return updated;
 
         }
+         public ReleaseManagementModel GetEmployeeData(string empId)
+         {
+              return dal.GetEmployeeData(empId);
+         }
     }
 }

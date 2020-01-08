@@ -7,3 +7,12 @@ C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\Rele
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.csproj.CopyComplete
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.dll
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\bin\Debug\ReleaseManagementDALLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\bin\Debug\ReleaseManagementDALLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\bin\Debug\ReleaseManagementProjectLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\bin\Debug\ReleaseManagementProjectLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.csprojAssemblyReference.cache
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.csproj.CoreCompileInputs.cache
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.csproj.CopyComplete
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementDALLibrary\obj\Debug\ReleaseManagementDALLibrary.pdb

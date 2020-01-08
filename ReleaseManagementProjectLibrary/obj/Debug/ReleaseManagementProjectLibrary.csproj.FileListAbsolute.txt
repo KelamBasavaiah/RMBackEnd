@@ -4,3 +4,9 @@ C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\Rele
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.csproj.CoreCompileInputs.cache
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.dll
 C:\Users\thamizhlni.murugesan\source\repos\ReleaseManagementProjectSolution\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementProjectLibrary\bin\Debug\ReleaseManagementProjectLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementProjectLibrary\bin\Debug\ReleaseManagementProjectLibrary.pdb
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.csprojAssemblyReference.cache
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.csproj.CoreCompileInputs.cache
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.dll
+D:\Angular\MargaManager\RMBackEnd\ReleaseManagementProjectLibrary\obj\Debug\ReleaseManagementProjectLibrary.pdb

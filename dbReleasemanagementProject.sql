@@ -1,4 +1,4 @@
-﻿use master
+use master
 
 go
 
@@ -31,9 +31,13 @@ create table tblEmployee(S_No int identity primary key,employee_id
 as 'E'+right('0000'+cast(S_No as varchar(4)),3)
 persisted not null unique,
 employee_name varchar(50),
-employee_mailid varchar(50))
+employee_mailid varchar(50),employee_addr varchar(100),employee_joinDate date,employee_doj date,employee_bgroup varchar(20))
 
+insert into tblEmployee values('divhya','divhyadarsh429@gmail.com','num:50,xxx street,yyy,chennai',
+'2019-09-04','1997-11-29','A+')
+insert into tblLogin values('E002','divhya','00123')
 -- select  * from tblEmployee
+select * from tblLogin
 -- sp_help tblEmployee
 go
 
@@ -44,11 +48,9 @@ username varchar(20) constraint pk_userName primary key,password varchar(20))
 -- sp_help tblLogin
 go
 
-insert into tblEmployee values('Employee10','murugesanthamizhlni@gmail.com')
 
 go 
 
-insert into tblLogin values('E001','User1','1234')
 
 go
 
@@ -69,7 +71,7 @@ go
 --  select * from tblAssignProjectTable
 --  select * from tblModule
 --  select * from tblBug
---s  elect * from tblEmployee
+--select * from tblEmployee
 
 create table tblRole(employee_id varchar(4) constraint fk_eid references tblEmployee(employee_id),
 role varchar(50),Assigned_Module_or_Project_Id varchar(20)  )
@@ -625,7 +627,7 @@ go
 
 -- select * from tblLogin
 -------------------------------------admin--------------------------------------------------
-create proc proc_GetAllEmployeeForAdmin
+alter proc proc_GetAllEmployeeForAdmin
 as
 begin
 select * from tblEmployee 
@@ -634,5 +636,28 @@ end
 go
 
 --select * from tblEmployee
+sp_help tblEmployee
+ create proc proc_InsertEmployee(@empname varchar(50),@email varchar(50),@emp_addr varchar(100),
+ @emjdate date,@emdb date,@empblood varchar(20))
+ as
+ begin
+ insert into tblEmployee values(@empname,@email,@emp_addr,@emjdate,@emdb,@empblood)
+ end
 
-
+ alter proc proc_UpdateEmployee(@empid varchar(4),@empname varchar(50),@email varchar(50),@emp_addr varchar(100),
+ @emjdate date,@emdb date,@empblood varchar(20))
+ as
+ begin
+ update tblEmployee set employee_name=@empname,employee_mailid=@email,
+ employee_addr=@emp_addr,employee_joinDate=@emjdate,
+ employee_doj=@emdb,employee_bgroup=@empblood where
+ employee_id=@empid
+ end
+  go
+  create proc proc_GetEmployeeData(@empId varchar(4))
+  as
+  begin
+  select * from tblEmployee where employee_id=@empId
+  end
+ select * from tblEmployee
+ select * from tblProjectDetails

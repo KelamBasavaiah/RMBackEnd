@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +35,7 @@ namespace ReleaseManagementDALLibrary
             //cmdUpdatePass
             cmdUpdatepass,
         //Admin
-        cmdInsertEmp, cmdGetEmail, cmdGetEmps, cmdUpdateEmps;
+        cmdInsertEmp, cmdGetEmail, cmdGetEmps, cmdUpdateEmps,cmdGetEmployeeData;
 
         SqlDataAdapter daGetAllAssignedModules, daGetAllEmployees, daGetAllAssignedEmployees, daGetAllCompletedModules,
             daGetAllCompletedProject,
@@ -840,6 +840,7 @@ namespace ReleaseManagementDALLibrary
         public List<ReleaseManagementModel> GetAllEmployeesForAdmin()
         {
             cmdGetEmps = new SqlCommand("proc_GetAllEmployeeForAdmin", conn);
+            
             cmdGetEmps.CommandType = CommandType.StoredProcedure;
 
             List<ReleaseManagementModel> admins = new List<ReleaseManagementModel>();
@@ -850,8 +851,16 @@ namespace ReleaseManagementDALLibrary
             while (drUsers.Read())
             {
                 admin = new ReleaseManagementModel();
+                admin.EmployeeId = drUsers[1].ToString();
                 admin.EmployeeName = drUsers[2].ToString();
                 admin.Employee_mail = drUsers[3].ToString();
+                admin.Employee_addr = drUsers[4].ToString();
+                admin.Employee_joinDate =Convert.ToDateTime(drUsers[5].ToString());
+                admin.Employee_dob = Convert.ToDateTime(drUsers[6].ToString());
+                admin.Employee_bgroup = drUsers[7].ToString();
+
+
+
                 admins.Add(admin);
             }
             conn.Close();
@@ -862,13 +871,22 @@ namespace ReleaseManagementDALLibrary
         {
             bool _inserted = false;
             cmdInsertEmp = new SqlCommand("proc_InsertEmployee", conn);
-            cmdInsertEmp.Parameters.Add("@emp_name", SqlDbType.VarChar, 30);
-            cmdInsertEmp.Parameters.Add("@employee_email", SqlDbType.VarChar, 30);
+            cmdInsertEmp.Parameters.Add("@empname", SqlDbType.VarChar, 50);
+            cmdInsertEmp.Parameters.Add("@email", SqlDbType.VarChar, 50);
+            cmdInsertEmp.Parameters.Add("@emp_addr", SqlDbType.VarChar, 100);
+            cmdInsertEmp.Parameters.Add("@emjdate", SqlDbType.DateTime);
+            cmdInsertEmp.Parameters.Add("@emdb", SqlDbType.DateTime);
+            cmdInsertEmp.Parameters.Add("@empblood", SqlDbType.VarChar, 20);
+
             cmdInsertEmp.CommandType = CommandType.StoredProcedure;
 
             OpenConnection();
             cmdInsertEmp.Parameters[0].Value = admin.EmployeeName;
             cmdInsertEmp.Parameters[1].Value = admin.Employee_mail;
+      cmdInsertEmp.Parameters[2].Value = admin.Employee_addr;
+      cmdInsertEmp.Parameters[3].Value = admin.Employee_joinDate;
+      cmdInsertEmp.Parameters[4].Value = admin.Employee_dob;
+      cmdInsertEmp.Parameters[5].Value = admin.Employee_bgroup;
             if (cmdInsertEmp.ExecuteNonQuery() > 0)
                 _inserted = true;
             else
@@ -881,9 +899,13 @@ namespace ReleaseManagementDALLibrary
         {
             bool updated = false;
             cmdUpdateEmps = new SqlCommand("proc_UpdateEmployee", conn);
-            cmdUpdateEmps.Parameters.Add("@emp_id", SqlDbType.VarChar, 4);
-            cmdUpdateEmps.Parameters.Add("@emp_name", SqlDbType.VarChar, 30);
-            cmdUpdateEmps.Parameters.Add("@employee_email", SqlDbType.VarChar, 30);
+            cmdUpdateEmps.Parameters.AddWithValue("@empid", admin.EmployeeId);
+            cmdUpdateEmps.Parameters.AddWithValue("@empname", admin.EmployeeName);
+            cmdUpdateEmps.Parameters.AddWithValue("@email", admin.Employee_mail);
+            cmdUpdateEmps.Parameters.AddWithValue("@emp_addr",admin.Employee_addr);
+            cmdUpdateEmps.Parameters.AddWithValue("@emjdate", admin.Employee_joinDate);
+            cmdUpdateEmps.Parameters.AddWithValue("@emdb", admin.Employee_dob);
+            cmdUpdateEmps.Parameters.AddWithValue("@empblood", admin.Employee_bgroup);
             cmdUpdateEmps.CommandType = CommandType.StoredProcedure;
 
             OpenConnection();
@@ -907,5 +929,30 @@ namespace ReleaseManagementDALLibrary
             conn.Open();
         }
 
+    public ReleaseManagementModel GetEmployeeData(string empId)
+    {
+      cmdGetEmployeeData = new SqlCommand("proc_GetEmployeeData", conn);
+      cmdGetEmployeeData.Parameters.AddWithValue("@EmpId", empId);
+      cmdGetEmployeeData.CommandType = CommandType.StoredProcedure;
+
+      ReleaseManagementModel admin = new ReleaseManagementModel();
+      OpenConnection();
+      SqlDataReader drUsers = cmdGetEmployeeData.ExecuteReader();
+      while (drUsers.Read())
+      {
+      
+        admin.EmployeeId = drUsers[1].ToString();
+        admin.EmployeeName = drUsers[2].ToString();
+        admin.Employee_mail = drUsers[3].ToString();
+        admin.Employee_addr = drUsers[4].ToString();
+        admin.Employee_joinDate = Convert.ToDateTime(drUsers[5].ToString());
+        admin.Employee_dob = Convert.ToDateTime(drUsers[6].ToString());
+        admin.Employee_bgroup = drUsers[7].ToString();
+      }
+      conn.Close();
+      return admin;
+
     }
+
+  }
 }

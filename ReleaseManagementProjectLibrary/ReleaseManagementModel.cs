@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +12,9 @@ namespace ReleaseManagementProjectLibrary
             moduleId, moduleName, moduleDescription, role, moduleStatus;
         string developerName, testerName;
         string username, password;
-        string employee_mail;
+        string employee_mail, employee_addr, employee_bgroup;
         string bugname, bugstatus, bugid;
-        DateTime projectStartDate, projectEndDate, moduleStartDate, moduleEndDate, empStartDate, empEndDate;
+        DateTime projectStartDate, projectEndDate, moduleStartDate, moduleEndDate, empStartDate, empEndDate, employee_joinDate, employee_dob;
         int moduleCount,totalModules;
 
         public string EmployeeId { get => employeeId; set => employeeId = value; }
@@ -43,5 +43,9 @@ namespace ReleaseManagementProjectLibrary
         public string Bugstatus { get => bugstatus; set => bugstatus = value; }
         public string Bugid { get => bugid; set => bugid = value; }
         public string Employee_mail { get => employee_mail; set => employee_mail = value; }
-    }
+    public DateTime Employee_joinDate { get => employee_joinDate; set => employee_joinDate = value; }
+    public DateTime Employee_dob { get => employee_dob; set => employee_dob = value; }
+    public string Employee_addr { get => employee_addr; set => employee_addr = value; }
+    public string Employee_bgroup { get => employee_bgroup; set => employee_bgroup = value; }
+  }
 }
