@@ -16,17 +16,31 @@ namespace ReleaseManagementProject.Controllers
     public class CompletedProjectController : ApiController
     {
         ManagerBL bl = new ManagerBL();
-        [SkipMyGlobalActionFilter]
-        public DateTime GetProjects(string projectId)
+        public ReleaseManagementModel GetProjectDate(string projectId)
       {
+            try
+            {
+                return bl.GetProjectDate(projectId);
 
-            return bl.GetProjectDate(projectId);
+            }
+            catch(Exception e)
+            {
+
+                return new ReleaseManagementModel();
+            }
 
         }
-        [SkipMyGlobalActionFilter]
         public List<ReleaseManagementModel> delete(string userName)
         {
-            return bl.GetAllCompletedModules(userName);
+            try
+            {
+                return bl.GetAllCompletedModules(userName);
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
         public bool Post([FromBody]ReleaseManagementModel value)
         {

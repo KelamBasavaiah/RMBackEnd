@@ -17,20 +17,45 @@ namespace ReleaseManagementProject.Controllers
     {
         ManagerBL bl = new ManagerBL();
 
-        public IEnumerable<ReleaseManagementModel> Get(string username)
+        public  List<ReleaseManagementModel> Get(string username)
         {
-            return bl.bugFixedModuleData(username);
+            try
+            {
+                return bl.bugFixedModuleData(username);
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
         public ReleaseManagementModel Post([FromBody] ReleaseManagementModel tcb)
         {
-            if (tcb != null)
-                return bl.testerCreateBug(tcb);
-            else
+            try
+            {
+                if (tcb != null)
+                    return bl.testerCreateBug(tcb);
+                else
+                    return new ReleaseManagementModel();
+
+            }
+            catch(Exception e)
+            {
                 return new ReleaseManagementModel();
+            }
+            
         }
         public ReleaseManagementModel delete(string moduleid)
         {
-            return bl.GetBugFixedModule(moduleid);
+            try
+            {
+                return bl.GetBugFixedModule(moduleid);
+
+            }
+            catch(Exception e)
+            {
+                return new ReleaseManagementModel();
+            }
         }
     }
 }

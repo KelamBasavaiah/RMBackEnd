@@ -19,33 +19,58 @@ namespace ReleaseManagementProject.Controllers
 
         public List<ReleaseManagementModel> Get(string username)
         {
+            try
+            {
+                return bl.GetAllProjectsForDeveloperFromManager(username);
 
-            return bl.GetAllProjectsForDeveloperFromManager(username);
-           
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
+
+
         }
         public List<ReleaseManagementModel> Get(string projectId,string username)
         {
-            return bl.GetAllModulesForDeveloper(projectId,username);
+            try
+            {
+                return bl.GetAllModulesForDeveloper(projectId, username);
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
         public bool Put(string value,ReleaseManagementModel manager)
         {
-            bool updated = false;
-            string email = bl.GetEmail(manager.Username);
-            updated = bl.UpdateModuleStatustoManager(value);
-            if (updated)
+            try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("divhyadarsh429@gmail.com");
-                mail.To.Add(email);
-                mail.Subject = "Module Status Update To Manager";
-                mail.Body = manager.Username + " " + "Modules Completed Successfully";
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("divhyadarsh429@gmail.com", "dbinfosys29");
-                SmtpServer.EnableSsl = true;
-                SmtpServer.Send(mail);
+                bool updated = false;
+                string email = bl.GetEmail(manager.Username);
+                updated = bl.UpdateModuleStatustoManager(value);
+                if (updated)
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                    mail.From = new MailAddress("divhyadarsh429@gmail.com");
+                    mail.To.Add(email);
+                    mail.Subject = "Module Status Update To Manager";
+                    mail.Body = manager.Username + " " + "Modules Completed Successfully";
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("divhyadarsh429@gmail.com", "dbinfosys29");
+                    SmtpServer.EnableSsl = true;
+                    SmtpServer.Send(mail);
+                }
+                return updated;
+
             }
-            return updated;
+            catch(Exception e)
+            {
+                return false;
+            }
+
         }
 
 

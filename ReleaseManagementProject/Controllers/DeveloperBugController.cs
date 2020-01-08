@@ -16,21 +16,45 @@ namespace ReleaseManagementProject.Controllers
     {
         ManagerBL bl = new ManagerBL();
 
-        public IEnumerable<ReleaseManagementModel> Get(string username)
+        public List<ReleaseManagementModel> Get(string username)
         {
+            try
+            {
+                return bl.GetAllModuleNamesAndBugNames(username);
 
-            return bl.GetAllModuleNamesAndBugNames(username);
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
+
 
         }
-        public IEnumerable<ReleaseManagementModel> Get(string moduleid,string value)
+        public List<ReleaseManagementModel> Get(string moduleid,string value)
         {
-            return bl.GetAllModuleNamesAndModuleDescription(moduleid);
+            try
+            {
+                return bl.GetAllModuleNamesAndModuleDescription(moduleid);
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
 
         }
         // PUT: api/ModuleNameAndDescription/5
         public bool Put(string value, [FromBody]string value1)
         {
-            return bl.UpdateBugStatusToTester(value);
+            try
+            {
+                return bl.UpdateBugStatusToTester(value);
+
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
 
     }

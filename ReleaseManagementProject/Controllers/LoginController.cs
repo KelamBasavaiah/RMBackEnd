@@ -21,45 +21,50 @@ namespace ReleaseManagementProject.Controllers
     {
         ManagerBL bl = new ManagerBL();
 
-        [SkipMyGlobalActionFilter]
+       
         public List<ReleaseManagementModel> GetCompletedProjects(string username)
         {
-            return bl.GetAllCompletedProjects(username);
+            try
+            {
+                return bl.GetAllCompletedProjects(username);
+
+            }
+            catch(Exception e)
+            {
+                return new List<ReleaseManagementModel>();
+            }
         }
 
         [SkipMyGlobalActionFilter]
-        //public HttpResponseMessage Post(ReleaseManagementModel releaseManagementModel)
-        //{
-        //    string
-        //    if (bl.checkingadminlogin(username, password) == true)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-
-        //}
+    
         public string Post(ReleaseManagementModel userLogin)
         {
-            string token = null;
-            bool value = bl.checkinguserlogin(userLogin.Username, userLogin.Password);
-            if (value)
-
+            try
             {
-                IAuthContainerModel model = GetJWTContainerModel(userLogin.Username, userLogin.Role);
-                IAuthService authService = new JWTService(model.SecretKey);
-                token = authService.GenerateToken(model);
-                var message = Request.CreateResponse(HttpStatusCode.OK, "Authentication successfull");
-                message.Headers.Add("JWT_TOKEN", token);
+                string token = null;
+                bool value = bl.checkinguserlogin(userLogin.Username, userLogin.Password);
+                if (value)
 
-                return token;
+                {
+                    IAuthContainerModel model = GetJWTContainerModel(userLogin.Username, userLogin.Role);
+                    IAuthService authService = new JWTService(model.SecretKey);
+                    token = authService.GenerateToken(model);
+                    var message = Request.CreateResponse(HttpStatusCode.OK, "Authentication successfull");
+                    message.Headers.Add("JWT_TOKEN", token);
+
+                    return token;
+                }
+                else
+                {
+                    return token;
+                }
+
             }
-            else
+            catch(Exception e)
             {
-                return token; 
+                return null;
             }
+           
         }
         #region Private Methods
         private static JWTContainerModel GetJWTContainerModel(string userName, string role)
@@ -79,15 +84,23 @@ namespace ReleaseManagementProject.Controllers
         [SkipMyGlobalActionFilter]
         public bool Get(string username, string password)
         {
-
-            if (bl.checkingadminlogin(username, password) == true)
+            try
             {
-                return true;
+                if (bl.checkingadminlogin(username, password) == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch(Exception e)
             {
                 return false;
             }
+
+
 
         }
 

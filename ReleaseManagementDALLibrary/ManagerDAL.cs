@@ -643,7 +643,7 @@ namespace ReleaseManagementDALLibrary
             return _insertedrole;
         }
         //Get Project Date
-        public DateTime GetProjectDate(string projectId)
+        public ReleaseManagementModel GetProjectDate(string projectId)
         {
             cmdGetProjectDateForManager = new SqlCommand("proc_GetProjectDate", conn);
             cmdGetProjectDateForManager.Parameters.AddWithValue("@projectId", projectId);
@@ -651,15 +651,18 @@ namespace ReleaseManagementDALLibrary
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             conn.Open();
-            DateTime projDate = DateTime.Now;
+            ReleaseManagementModel projectDate = new ReleaseManagementModel();
             SqlDataReader drprojid = cmdGetProjectDateForManager.ExecuteReader();
             while (drprojid.Read())
             {
-                projDate = Convert.ToDateTime(drprojid[0].ToString());
+                projectDate.ProjectStartDate = Convert.ToDateTime(drprojid[0].ToString());
+                projectDate.ProjectEndDate = Convert.ToDateTime(drprojid[1].ToString());
+
             }
             conn.Close();
+            
 
-            return projDate;
+            return projectDate;
 
         }
         //Insert modules

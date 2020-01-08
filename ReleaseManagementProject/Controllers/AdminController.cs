@@ -18,7 +18,15 @@ namespace ReleaseManagementProject.Controllers
         [SkipMyGlobalActionFilter]
         public List<ReleaseManagementModel> Get()
         {
-            return bl.GetAllEmps();  
+            try
+            {
+                return bl.GetAllEmps();
+
+            }
+            catch
+            {
+                return new List<ReleaseManagementModel>();
+            }
 
         }
 
@@ -32,19 +40,37 @@ namespace ReleaseManagementProject.Controllers
         [SkipMyGlobalActionFilter]
         public bool Post([FromBody]ReleaseManagementModel[] value)
         {
-            if (bl.InsertEmpDetails(value))
-                return true;
-            else
+            try
+            {
+                if (bl.InsertEmpDetails(value))
+                    return true;
+                else
+                    return false;
+
+            }
+            catch(Exception e)
+            {
                 return false;
+            }
+
         }
 
         // PUT api/values/5
         [SkipMyGlobalActionFilter]
         public bool Put([FromBody]ReleaseManagementModel admin)
         {
-            bool update = false;
-            update = bl.UpdateEmpDetails(admin);
-            return update;
+            try
+            {
+                bool update = false;
+                update = bl.UpdateEmpDetails(admin);
+                return update;
+
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+
         }
 
     }
